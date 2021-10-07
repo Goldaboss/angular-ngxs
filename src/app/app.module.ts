@@ -1,16 +1,28 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {NgxsModule} from "@ngxs/store";
+import {environment} from "../environments/environment";
+import {AnimalState} from "./state/animal.state";
+import {AnimalsListComponent} from './component/animals-list/animals-list.component';
+import {AnimalItemComponent} from './component/animal-item/animal-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnimalsListComponent,
+    AnimalItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxsModule.forRoot([AnimalState], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

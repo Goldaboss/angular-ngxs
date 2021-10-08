@@ -1,18 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-animal-item',
   templateUrl: './animal-item.component.html',
   styleUrls: ['./animal-item.component.scss']
 })
-export class AnimalItemComponent implements OnInit {
-
-
+export class AnimalItemComponent {
   @Input() animal: string
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

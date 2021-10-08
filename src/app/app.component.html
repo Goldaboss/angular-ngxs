@@ -1,7 +1,8 @@
 
 
-<div style="display: flex">
+<div>
   <app-animals-list></app-animals-list>
-  <pre>{{arrAnimals$ | async | json}}</pre>
+  <pre><p>objAnimals</p>{{objAnimals$ | async | json}} </pre>
+  <pre><p>arrAnimals</p>{{arrAnimals$ | async | json}} </pre>
 </div>
 

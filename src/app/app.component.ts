@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Select, Store} from "@ngxs/store";
 import {AddAnimals} from "./state/animal.actions";
-import {AnimalState} from "./state/animal.state";
+import {AnimalState, AnimalStateModel} from "./state/animal.state";
 import {Observable} from "rxjs";
 
 @Component({
@@ -11,8 +11,10 @@ import {Observable} from "rxjs";
 })
 export class AppComponent {
   title = 'test-ngxs';
-  // @ts-ignore
-  @Select(AnimalState) public arrAnimals$: Observable<string[]>;
+
+  @Select(AnimalState.animalsStateData) public objAnimals$: Observable<AnimalStateModel>;
+
+  @Select(AnimalState.animals) public arrAnimals$: Observable<string[]>;
 
   constructor(private readonly store: Store) {
     setInterval(() => this.addAnimal(`pisya ${(Math.random() * 10).toFixed()}`), 7000);

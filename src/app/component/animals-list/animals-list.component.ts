@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Select} from "@ngxs/store";
-import {AnimalState} from "../../state/animal.state";
+
 import {Observable} from "rxjs";
+import {AnimalState, AnimalStateModel} from "../../state/animal.state";
 
 @Component({
   selector: 'app-animals-list',
@@ -10,11 +11,14 @@ import {Observable} from "rxjs";
 })
 export class AnimalsListComponent implements OnInit {
 
-  constructor() { }
+
+  @Select(AnimalState.animalsStateData) public objAnimals$: Observable<AnimalStateModel>;
+
+  @Select(AnimalState.animals) public arrAnimals$: Observable<string[]>
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
-  // @ts-ignore
-  @Select(AnimalState) public arrAnimals$: Observable<string[]>;
 }

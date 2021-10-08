@@ -1,25 +1,47 @@
 import {Injectable} from "@angular/core";
-import {Action, State, StateContext} from "@ngxs/store";
+import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {AddAnimals} from "./animal.actions";
 
-interface AnimaStateModel {
+export interface AnimalStateModel {
   animals: string[];
   animalsCount: number;
 }
 
-@State<string[]>({
+const defaults: AnimalStateModel = {
+  animals: [],
+  animalsCount: 0,
+};
+
+@State<AnimalStateModel>({
   name: 'animals',
-  defaults: []
+  defaults
 })
 @Injectable()
 export class AnimalState {
+  @Selector()
+  static animalsStateData(state: AnimalStateModel): AnimalStateModel {
+    return state
+  }
+
+  @Selector()
+  static animals(state: AnimalStateModel): string[] {
+    return state.animals
+  }
+
+  @Selector()
+  static animalsCount(state: AnimalStateModel): number {
+    return state.animalsCount
+  }
+
   @Action(AddAnimals)
-  public addAnimals(ctx: StateContext<string[]>, action: AddAnimals){
-    console.log(action);
+  public addAnimals(ctx: StateContext<AnimalStateModel>, action: AddAnimals) {
+    // console.log(action);
     const state = ctx.getState();
-    ctx.setState([
-      ...state,
-      action.name
-    ])
+    ctx.setState({
+      animals: [...state.animals, action.name],
+      animalsCount: state.animals.length + 1
+    })
   }
 }
+
+

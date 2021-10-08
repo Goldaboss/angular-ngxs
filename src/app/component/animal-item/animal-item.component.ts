@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AnimalItemComponent implements OnInit {
 
-  // @ts-ignore
+
   @Input() animal: string
 
   constructor() { }

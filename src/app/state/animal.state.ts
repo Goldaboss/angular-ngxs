@@ -35,7 +35,6 @@ export class AnimalState {
 
   @Action(AddAnimals)
   public addAnimals(ctx: StateContext<AnimalStateModel>, action: AddAnimals) {
-    // console.log(action);
     const state = ctx.getState();
     ctx.setState({
       animals: [...state.animals, action.name],

@@ -6,5 +6,5 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./animal-item.component.scss']
 })
 export class AnimalItemComponent {
-  @Input() animal: string
+  @Input() animal: string;
 }

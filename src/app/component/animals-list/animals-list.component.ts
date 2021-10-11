@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Select} from "@ngxs/store";
-
 import {Observable} from "rxjs";
 import {AnimalState, AnimalStateModel} from "../../state/animal.state";
 

@@ -13,4 +13,6 @@ export class AnimalsListComponent {
   @Select(AnimalState.animalsStateData) public objAnimals$: Observable<AnimalStateModel>;
 
   @Select(AnimalState.animals) public arrAnimals$: Observable<string[]>
+
+  @Select(AnimalState.animalsCount) public animalsCount$: Observable<number>;
 }

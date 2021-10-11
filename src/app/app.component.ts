@@ -17,7 +17,6 @@ export class AppComponent {
   @Select(AnimalState.animals) public arrAnimals$: Observable<string[]>;
 
   constructor(private readonly store: Store) {
-    setInterval(() => this.addAnimal(`pisya ${(Math.random() * 10).toFixed()}`), 7000);
   }
 
   addAnimal(name: string) {

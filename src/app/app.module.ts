@@ -9,12 +9,16 @@ import {AnimalsListComponent} from './component/animals-list/animals-list.compon
 import {AnimalItemComponent} from './component/animal-item/animal-item.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from "@angular/material/list";
+import {AddAnimalComponent} from "./component/add-animal/add-animal.component";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalsListComponent,
-    AnimalItemComponent
+    AnimalItemComponent,
+    AddAnimalComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import {MatListModule} from "@angular/material/list";
       developmentMode: !environment.production
     }),
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

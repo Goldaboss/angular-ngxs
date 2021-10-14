@@ -4,3 +4,10 @@ export class AddAnimals {
   constructor(public name: string) {
   }
 }
+
+export class RemoveAnimal {
+  static readonly type = '[Zoo] Remove Animal'
+
+  constructor(public id: number) {
+  }
+}

@@ -1,3 +1,9 @@
 .animals-list {
   border: 1px solid lawngreen;
+  padding: 10px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

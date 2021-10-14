@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {Store} from "@ngxs/store";
+import {AddAnimals} from "../../state/animal.actions";
 
 @Component({
   selector: 'app-add-animal',
@@ -7,18 +9,15 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class AddAnimalComponent {
 
-  @Output() public onAddAnimal: EventEmitter<string> = new EventEmitter<string>();
-
   public animal = '';
 
-  constructor() {
+  constructor(private readonly store: Store) {
   }
 
   addAnimal() {
     if (this.animal.trim()) {
-      const animal: string = this.animal
-      this.onAddAnimal.emit(animal)
-      this.animal = '';
+      this.store.dispatch(new AddAnimals(this.animal))
     }
+    this.animal = '';
   }
 }

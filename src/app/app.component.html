@@ -1,10 +1,10 @@
 <app-add-animal
-  (onAddAnimal)="addAnimal($event)"
+  style="border: 1px solid rebeccapurple; margin: 0 10px"
 ></app-add-animal>
-<app-animals-list></app-animals-list>
 
-<div>
-  <pre><p>objAnimals</p>{{objAnimals$ | async | json}} </pre>
-  <pre><p>arrAnimals</p>{{arrAnimals$ | async | json}} </pre>
+<div style="width: 33%; padding: 10px">
+  <app-animals-list></app-animals-list>
+<!--  <pre style="width: 30%">objAnimals: {{objAnimals$ | async | json}} </pre>-->
+<!--  <pre style="width: 30%">arrAnimals: {{arrAnimals$ | async | json}} </pre>-->
 </div>
 

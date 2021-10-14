@@ -1,7 +1,9 @@
 <mat-list class="animals-list">
   <app-animal-item
-    *ngFor="let animal of arrAnimals$ | async"
+    class="item"
+    *ngFor="let animal of arrAnimals$ | async; let idx = index"
     [animal]="animal"
+    [id]="idx"
   ></app-animal-item>
   <p>Total :{{animalsCount$ | async}}</p>
 </mat-list>

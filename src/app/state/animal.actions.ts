@@ -11,3 +11,10 @@ export class RemoveAnimal {
   constructor(public id: number) {
   }
 }
+
+export class RenameAnimal {
+  static readonly type = '[Zoo] Rename Animal'
+
+  constructor(public id: number, public name: string) {
+  }
+}

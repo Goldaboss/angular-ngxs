@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Action, Selector, State, StateContext} from "@ngxs/store";
-import {AddAnimals, RemoveAnimal} from "./animal.actions";
+import {AddAnimals, RemoveAnimal, RenameAnimal} from "./animal.actions";
 
 export interface AnimalStateModel {
   animals: AnimalModule[];
@@ -21,6 +21,7 @@ export interface AnimalModule {
 })
 @Injectable()
 export class AnimalState {
+
   @Selector()
   static animalsStateData(state: AnimalStateModel): AnimalStateModel {
     return state
@@ -52,6 +53,26 @@ export class AnimalState {
   public removeAnimal(ctx: StateContext<AnimalStateModel>, action: RemoveAnimal) {
     const state = ctx.getState();
     const animals = [...state.animals].filter((animal) => animal.id !== action.id);
+    ctx.setState({
+      animals,
+      count: animals.length
+    });
+  }
+
+  @Action(RenameAnimal)
+  public renameAnimal(ctx: StateContext<AnimalStateModel>, action: RenameAnimal) {
+    const state = ctx.getState();
+    const newObj = {
+      name: action.name,
+      id: action.id
+    }
+    const animals = [...state.animals].map((el) => {
+      if (el.id === action.id) {
+        return newObj
+      }
+      return el;
+    });
+
     ctx.setState({
       animals,
       count: animals.length

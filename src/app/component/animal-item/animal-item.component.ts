@@ -11,8 +11,6 @@ import {AnimalModule} from "../../state/animal.state";
 export class AnimalItemComponent {
   @Input() animal: AnimalModule;
 
-  public newName = '';
-
   constructor(private readonly store: Store) {
   }
 
@@ -21,9 +19,7 @@ export class AnimalItemComponent {
   }
 
   renameAnimal() {
-    if (this.newName.trim()) {
-      this.store.dispatch(new RenameAnimal(this.animal.id, this.newName));
-    }
-    this.newName = '';
+    const test = String(prompt('new name', ''));
+    this.store.dispatch(new RenameAnimal(this.animal.id, test));
   }
 }

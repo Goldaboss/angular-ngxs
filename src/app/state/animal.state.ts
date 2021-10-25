@@ -22,6 +22,8 @@ export interface AnimalModule {
 @Injectable()
 export class AnimalState {
 
+  private animalsId = 0;
+
   @Selector()
   static animalsStateData(state: AnimalStateModel): AnimalStateModel {
     return state
@@ -36,8 +38,6 @@ export class AnimalState {
   static animalsCount(state: AnimalStateModel): number {
     return state.count
   }
-
-  private animalsId = 0;
 
   @Action(AddAnimals)
   public addAnimals(ctx: StateContext<AnimalStateModel>, action: AddAnimals) {
@@ -62,17 +62,16 @@ export class AnimalState {
   @Action(RenameAnimal)
   public renameAnimal(ctx: StateContext<AnimalStateModel>, action: RenameAnimal) {
     const state = ctx.getState();
-    const newObj = {
+    const newNameAnimal = {
       name: action.name,
       id: action.id
-    }
+    };
     const animals = [...state.animals].map((el) => {
       if (el.id === action.id) {
-        return newObj
+        return newNameAnimal;
       }
       return el;
     });
-
     ctx.setState({
       animals,
       count: animals.length

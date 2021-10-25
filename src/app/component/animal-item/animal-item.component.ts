@@ -19,7 +19,7 @@ export class AnimalItemComponent {
   }
 
   renameAnimal() {
-    const test = String(prompt('new name', ''));
-    this.store.dispatch(new RenameAnimal(this.animal.id, test));
+    const requestName = String(prompt('new name', ''));
+    this.store.dispatch(new RenameAnimal(this.animal.id, requestName));
   }
 }

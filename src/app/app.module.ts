@@ -12,13 +12,18 @@ import {MatListModule} from "@angular/material/list";
 import {AddAnimalComponent} from "./component/add-animal/add-animal.component";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {DialogOverviewExampleDialog} from './component/dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalsListComponent,
     AnimalItemComponent,
-    AddAnimalComponent
+    AddAnimalComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,9 @@ import {MatInputModule} from "@angular/material/input";
     BrowserAnimationsModule,
     MatListModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

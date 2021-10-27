@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Select} from "@ngxs/store";
 import {Observable} from "rxjs";
-import {AnimalModule, AnimalState, AnimalStateModel} from "../../state/animal.state";
+import {AnimalModel, AnimalState, AnimalStateModel} from "../../state/animal.state";
 
 @Component({
   selector: 'app-animals-list',
@@ -12,7 +12,7 @@ export class AnimalsListComponent {
 
   @Select(AnimalState.animalsStateData) public objAnimals$: Observable<AnimalStateModel>;
 
-  @Select(AnimalState.animals) public arrAnimals$: Observable<AnimalModule[]>
+  @Select(AnimalState.animals) public arrAnimals$: Observable<AnimalModel[]>
 
   @Select(AnimalState.animalsCount) public animalsCount$: Observable<number>;
 }

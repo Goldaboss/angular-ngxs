@@ -3,11 +3,11 @@ import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {AddAnimals, RemoveAnimal, RenameAnimal} from "./animal.actions";
 
 export interface AnimalStateModel {
-  animals: AnimalModule[];
+  animals: AnimalModel[];
   count: number;
 }
 
-export interface AnimalModule {
+export interface AnimalModel {
   name: string;
   id: number;
 }
@@ -30,7 +30,7 @@ export class AnimalState {
   }
 
   @Selector()
-  static animals(state: AnimalStateModel): AnimalModule[] {
+  static animals(state: AnimalStateModel): AnimalModel[] {
     return state.animals
   }
 
@@ -66,7 +66,7 @@ export class AnimalState {
       name: action.name,
       id: action.id
     };
-    const animals = [...state.animals].map((el) => {
+    const animals = state.animals.map((el) => {
       if (el.id === action.id) {
         return newNameAnimal;
       }

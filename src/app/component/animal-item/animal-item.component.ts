@@ -1,7 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {RemoveAnimal, RenameAnimal} from "../../state/animal.actions";
+import {RemoveAnimal} from "../../state/animal.actions";
 import {Store} from "@ngxs/store";
-import {AnimalModule} from "../../state/animal.state";
+import {AnimalModel} from "../../state/animal.state";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogOverviewExampleDialog} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-animal-item',
@@ -9,17 +11,18 @@ import {AnimalModule} from "../../state/animal.state";
   styleUrls: ['./animal-item.component.scss']
 })
 export class AnimalItemComponent {
-  @Input() animal: AnimalModule;
+  @Input() animal: AnimalModel;
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store, public dialog: MatDialog) {
+  }
+
+  openDialog(): void {
+    this.dialog.open(DialogOverviewExampleDialog, {
+      data: this.animal
+    });
   }
 
   removeAnimal() {
     this.store.dispatch(new RemoveAnimal(this.animal.id));
-  }
-
-  renameAnimal() {
-    const requestName = String(prompt('new name', ''));
-    this.store.dispatch(new RenameAnimal(this.animal.id, requestName));
   }
 }
